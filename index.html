@@ -79,26 +79,12 @@ footer a{color:var(--sub)}
 
 <section id="signup">
 <h2>Get early access</h2>
-<form id="eaForm" action="https://formsubmit.co/aide@e-labs.co.uk" method="POST">
-<input type="hidden" name="_subject" value="Footsure early-access signup">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_next" value="https://e-labs-io.github.io/footsure/?signed=1#signup">
-<input type="text" name="_honey" style="display:none">
-<input type="hidden" name="src" id="srcField" value="direct">
-<label for="em">Work email</label>
-<input type="email" id="em" name="email" required placeholder="you@yourpractice.co.uk">
-<label for="firm">Practice / firm name (optional)</label>
-<input type="text" id="firm" name="firm" placeholder="">
-<label>Would you pre-pay £3.50 for a 10-statement pack today if checkout were open?</label>
-<div class="radio-row">
-<label><input type="radio" name="prepay_intent" value="yes"> Yes</label>
-<label><input type="radio" name="prepay_intent" value="maybe"> Maybe at launch</label>
-<label><input type="radio" name="prepay_intent" value="no"> No</label>
+<div class="card">
+<p style="margin-bottom:14px">One email is all it takes — tell us your practice name if you like, and whether you'd pre-pay £3.50 for a 10-statement pack at launch.</p>
+<a id="ctaMail" href="mailto:aide@e-labs.co.uk?subject=Footsure%20early%20access&body=Please%20add%20me%20to%20the%20early-access%20list.%0A%0APractice%3A%20%0AWould%20you%20pre-pay%20%C2%A33.50%20for%2010%20conversions%20at%20launch%3F%20(yes%20%2F%20maybe%20%2F%20no)%3A%20" style="display:block;text-align:center;background:var(--acc);color:#fff;border-radius:8px;padding:14px;font-size:1.05rem;font-weight:700;text-decoration:none">Email us for early access</a>
+<p class="fine" style="text-align:center">or write to <strong>aide@e-labs.co.uk</strong> with the subject "Footsure early access"</p>
+<p class="fine">You'll get one email at launch, nothing else. Say "stop" at any time and you'll never hear from us again. We never share your address.</p>
 </div>
-<button type="submit">Request early access</button>
-<p class="fine">One email when we launch, nothing else. Unsubscribe by replying "stop". We never share your address.</p>
-</form>
-<div id="thanks"><strong>Thanks — you're on the list.</strong> We'll email you once, at launch. If you have a statement format you dread, reply to that email and we'll make sure it's covered.</div>
 </section>
 
 <footer>
@@ -109,8 +95,11 @@ footer a{color:var(--sub)}
 <script>
 (function(){
   var p=new URLSearchParams(location.search);
-  var s=p.get('src');if(s){document.getElementById('srcField').value=s;}
-  if(p.get('signed')==='1'){document.getElementById('eaForm').style.display='none';document.getElementById('thanks').style.display='block';}
+  var s=p.get('src');
+  if(s){
+    var a=document.getElementById('ctaMail');
+    a.href=a.href.replace('Footsure%20early%20access','Footsure%20early%20access%20('+encodeURIComponent(s)+')');
+  }
 })();
 </script>
 </body>
